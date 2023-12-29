@@ -1,125 +1,175 @@
+// Portfolio.jsx
 import React, { useState } from "react";
+import projectDescriptions from "./Description"; // Adjust the path accordingly
+import Book_store from "../assets/portfolio/Book_store.png";
+import Collage_website from "../assets/portfolio/Collage_website.png";
+import Exercise_Tracker from "../assets/portfolio/Exercise_Tracker.png";
+import MailRank from "../assets/portfolio/MailRank.png";
+import stock_market from "../assets/portfolio/Stock_market.jpg";
+import tool from "../assets/portfolio/Tool_for_classification.png";
+import Portfolioimg from "../assets/portfolio/Portfolioimg.png";
+import Netflix from "../assets/portfolio/Netflix_clone.jpeg";
+import feedback from "../assets/portfolio/feedback.jpg";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [submissionStatus, setSubmissionStatus] = useState(null);
+const Portfolio = () => {
+  const portfolios = [
+    {
+      id: 1,
+      name: "Book Store",
+      src: Book_store,
+      githubLink: "https://github.com/PPraveen007/Book_Store",
+    },
+    {
+      id: 2,
+      name: "Collage Website",
+      src: Collage_website,
+      githubLink: "https://github.com/PPraveen007/Collage_Website",
+    },
+    {
+      id: 3,
+      name: "Exercise Tracker",
+      src: Exercise_Tracker,
+      githubLink: "https://github.com/PPraveen007/Exercise_tracker",
+    },
+    {
+      id: 4,
+      name: "MailRank",
+      src: MailRank,
+      githubLink: "https://github.com/PPraveen007/Mail_Priotization",
+    },
+    {
+      id: 5,
+      name: "SM",
+      src: stock_market,
+      githubLink:
+        "https://github.com/PPraveen007/Stock_Market_Prediction_with_NN",
+    },
+    {
+      id: 6,
+      name: "Automated=ML-Based-Tool",
+      src: tool,
+      githubLink: "https://github.com/PPraveen007/automated-ML-based-tool",
+    },
+    {
+      id: 7,
+      name: "Portfolio",
+      src: Portfolioimg,
+      githubLink: "https://github.com/PPraveen007/PoRtFoLiO", // Update with the correct link of your porfolio
+    },
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    {
+      id: 8,
+      name: "FlickWEB",
+      src: Netflix,
+      githubLink: "https://github.com/PPraveen007/Flickweb",
+    },
+    {
+      id: 9,
+      name: "Feedback_system",
+      src: feedback,
+      githubLink: "https://github.com/your-username/Tool_for_classification",
+    },
+  ];
+
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const openGithubLink = (link) => {
+    window.open(link, "_blank");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const openAboutModal = (project) => {
+    setSelectedProject(project);
+  };
 
-    // Check if all fields are filled before submitting
-    if (formData.name && formData.email && formData.message) {
-      try {
-        const params = new URLSearchParams(formData);
-        const response = await fetch(
-          "https://getform.io/f/bbf39f06-5af9-4b3c-905e-93fe90920493",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: params,
-          }
-        );
-
-        console.log("Response from server:", response);
-        console.log("Response body:", await response.text());
-
-        if (response.ok) {
-          setSubmissionStatus("success");
-          console.log("Form submitted successfully!");
-        } else {
-          setSubmissionStatus("error");
-          console.error("Form submission failed:", response.statusText);
-        }
-      } catch (error) {
-        setSubmissionStatus("error");
-        console.error("An error occurred during form submission:", error);
-      }
-    } else {
-      setSubmissionStatus("emptyFields");
-      alert("Please fill in all fields before submitting.");
-    }
+  const closeAboutModal = () => {
+    setSelectedProject(null);
   };
 
   return (
     <div
       name="portfolio"
-      className="w-full h-screen bg-gradient-to-b from-black to-gray-800 p-4 text-white"
+      className="w-full bg-gradient-to-b from-black to-gray-800 p-4 text-white"
     >
-      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
+      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full min-h-screen">
         <div className="pb-8">
           <p className="text-4xl font-bold inline border-b-4 border-gray-500">
-            Contact
+            Portfolio
           </p>
-          <p className="py-6">Submit the form below to get in touch with me</p>
+          <p className="py-6">Check out some of my work right here</p>
         </div>
 
-        <div className="flex justify-center items-center">
-          {submissionStatus === "success" && (
-            <div className="text-green-500">
-              Request submitted successfully!
-            </div>
-          )}
-          {submissionStatus === "error" && (
-            <div className="text-red-500">
-              Form submission failed. Please try again.
-            </div>
-          )}
-          <form
-            onSubmit={handleSubmit}
-            action="https://getform.io/f/bbf39f06-5af9-4b3c-905e-93fe90920493"
-            method="POST"
-            className="flex flex-col w-full md:w-1/2"
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleChange}
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            />
-            <input
-              type="text"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            />
-            <textarea
-              name="message"
-              placeholder="Enter your message"
-              rows="10"
-              value={formData.message}
-              onChange={handleChange}
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            ></textarea>
-
-            <button
-              type="submit"
-              className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300"
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-screen-lg mx-auto">
+          {portfolios.map(({ id, name, src, githubLink }) => (
+            <div
+              key={id}
+              className="shadow-md shadow-gray-600 rounded-lg overflow-hidden"
             >
-              Let's talk
-            </button>
-          </form>
+              <img
+                src={src}
+                alt=""
+                className="w-full h-52 object-cover duration-200 hover:scale-105"
+              />
+              <div className="inset-0 flex flex-col items-center justify-end p-4 bg-gradient-to-t from-black to-transparent">
+                <p className="text-white font-bold text-xl mb-2">{name}</p>
+                <div className="flex items-center justify-center space-x-4">
+                  <button
+                    className="px-6 py-3 bg-gray-800 text-white rounded-md duration-200 hover:scale-105"
+                    onClick={() => openAboutModal(id)}
+                  >
+                    About
+                  </button>
+
+                  <button
+                    className="px-6 py-3 bg-gray-800 text-white rounded-md duration-200 hover:scale-105"
+                    onClick={() => openGithubLink(githubLink)}
+                  >
+                    Code
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div
+              className="fixed inset-0 transition-opacity"
+              onClick={closeAboutModal}
+            >
+              <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <span
+              className="hidden sm:inline-block sm:align-middle sm:h-screen"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+              <div className="bg-white p-4">
+                <pre className="text-gray-600 whitespace-pre-line">
+                  {projectDescriptions[selectedProject]}
+                </pre>
+              </div>
+              <div className="bg-gray-100 p-4">
+                <button
+                  onClick={closeAboutModal}
+                  className="px-4 py-2 bg-gray-800 text-white rounded-md"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Contact;
+export default Portfolio;
