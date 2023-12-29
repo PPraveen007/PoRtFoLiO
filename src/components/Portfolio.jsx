@@ -17,50 +17,50 @@ const Portfolio = () => {
       id: 1,
       name: "Book Store",
       src: Book_store,
-      githubLink: "https://github.com/your-username/Book_store",
+      githubLink: "https://github.com/PPraveen007/Book_Store",
     },
     {
       id: 2,
       name: "Collage Website",
       src: Collage_website,
-      githubLink: "https://github.com/your-username/Collage_website",
+      githubLink: "https://github.com/PPraveen007/Collage_Website",
     },
     {
       id: 3,
       name: "Exercise Tracker",
       src: Exercise_Tracker,
-      githubLink: "https://github.com/your-username/Exercise_Tracker",
+      githubLink: "https://github.com/PPraveen007/Exercise_tracker",
     },
     {
       id: 4,
       name: "MailRank",
       src: MailRank,
-      githubLink: "https://github.com/your-username/MailRank",
+      githubLink: "https://github.com/PPraveen007/Mail_Priotization",
     },
     {
       id: 5,
       name: "SM",
       src: stock_market,
-      githubLink: "https://github.com/your-username/SM",
+      githubLink: "https://github.com/PPraveen007/Stock_Market_Prediction_with_NN",
     },
     {
       id: 6,
-      name: "Tool for Classification",
+      name: "Automated=ML-Based-Tool",
       src: tool,
-      githubLink: "https://github.com/your-username/Tool_for_classification",
+      githubLink: "https://github.com/PPraveen007/automated-ML-based-tool",
     },
     {
       id: 7,
       name: "Portfolio",
       src: Portfolioimg,
-      githubLink: "https://github.com/your-username/Portfolio", // Update with the correct link
+      githubLink: "https://github.com/PPraveen007/PoRtFoLiO", // Update with the correct link of your porfolio
     },
     
     {
       id: 8,
       name: "FlickWEB",
       src: Netflix,
-      githubLink: "https://github.com/your-username/Tool_for_classification",
+      githubLink: "https://github.com/PPraveen007/Flickweb",
     },
     {
       id: 9,
@@ -89,7 +89,7 @@ const Portfolio = () => {
       name="portfolio"
       className="w-full bg-gradient-to-b from-black to-gray-800 p-4 text-white"
     >
-      <div className="flex flex-col justify-center max-w-screen-lg mx-12 h-full min-h-screen">
+      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full min-h-screen">
         <div className="pb-8">
           <p className="text-4xl font-bold inline border-b-4 border-gray-500">
             Portfolio
